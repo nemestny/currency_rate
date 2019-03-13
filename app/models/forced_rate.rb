@@ -1,0 +1,2 @@
+class ForcedRate < Rate
+end

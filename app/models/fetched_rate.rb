@@ -1,0 +1,2 @@
+class FetchedRate < Rate
+end
