@@ -1,14 +1,20 @@
 <h1>ForcedRates#new</h1>
 <p>Find me in app/views/forced_rates/new.html.erb</p>
-<div id="rate"></div>
-  <%= form_with(model: @forced_rate, url: admin_path, method: :post ) do |f| %>
-    <div class="form-group">
-      <%= f.text_field :value %>
-    </div>
-    <div class="form-group">
-      <%= f.datetime_local_field :expires_at %>
-    </div>
-    <div class="actions">
-      <%= f.submit  class: 'btn btn-primary'%>
-    </div>
-  <% end %>
+
+<div id="rate_value"></div>
+
+<% flash.each do |key, message| %>
+  <p class="<%= key %>"><%= message %></p>
+<% end %>
+
+<%= form_with(model: @forced_rate, url: admin_path, method: :post ) do |f| %>
+  <div class="form-group">
+    <%= f.text_field :value %>
+  </div>
+  <div class="form-group">
+    <%= f.datetime_local_field :expires_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit  class: 'btn btn-primary'%>
+  </div>
+<% end %>

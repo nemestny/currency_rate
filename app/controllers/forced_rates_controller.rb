@@ -5,8 +5,16 @@ class ForcedRatesController < ApplicationController
   end
 
   def create
-    ForcedRate.create(value: permit_params[:value], expires_at: permit_params[:expires_at])
-    render :new
+    @forced_rate = ForcedRate.new(value: permit_params[:value], 
+                        expires_at: permit_params[:expires_at])
+
+    if @forced_rate.valid?
+      @forced_rate.save
+      # flash.now[:notice] = 'Forced Rate created'
+      render :new
+    else
+      render :new
+    end
   end
 
   private
