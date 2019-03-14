@@ -1,4 +1,4 @@
 class Rate < ApplicationRecord
 
-# after_create_commit { RateChannel.broadcast_to() }
+after_create_commit { ActionCable.server.broadcast('rate',self)}
 end
