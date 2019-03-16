@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   post '/admin', to: 'forced_rates#create'
 
   require 'sidekiq/web'
+  # require 'sidekiq/cron/web'
   mount Sidekiq::Web => '/sidekiq'
 end
