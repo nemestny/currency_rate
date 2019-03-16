@@ -1,7 +1,7 @@
 class ForcedRatesController < ApplicationController
   def new
     @forced_rate = ForcedRate.last || ForcedRate.new
-    FetchRateJob.perform_later
+    # FetchRateJob.perform_later
   end
 
   def create
