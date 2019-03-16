@@ -67,3 +67,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "foreman", "~> 0.64.0"
 
 gem "jquery-rails", "~> 4.3"
+
+gem "sidekiq", "~> 5.2"
+gem "redis", "~> 4.1"
