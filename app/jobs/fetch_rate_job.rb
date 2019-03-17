@@ -1,5 +1,4 @@
-# require 'net/http'
-
+## Job for fetching rate from CBR
 class FetchRateJob < ApplicationJob
   queue_as :default
 
