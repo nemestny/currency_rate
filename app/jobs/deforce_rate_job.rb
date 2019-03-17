@@ -1,7 +1,9 @@
 class DeforceRateJob < ApplicationJob
-  queue_as :default
+  queue_as :critical
 
   def perform(*args)
-    # Do something later
+    rate = FetchedRate.last.dup
+    return unless rate
+    rate.save
   end
 end
