@@ -1,5 +1,7 @@
-class ForcedRate < Rate
+# frozen_string_literal: true
 
+## Class of Forced rates
+class ForcedRate < Rate
   validates(
     :expires_at,
     timeliness:
