@@ -72,3 +72,5 @@ gem "sidekiq", "~> 5.2"
 gem "redis", "~> 4.1"
 
 gem "sidekiq-cron", "~> 1.1"
+
+gem "validates_timeliness", "~> 4.0"
