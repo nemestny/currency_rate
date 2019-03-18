@@ -4,7 +4,7 @@
 <div id="rate_value"></div>
 
 <% flash.each do |key, message| %>
-  <p class="<%= key %>"><%= message %></p>
+  <p class=<%= key %>><%= message %></p>
 <% end %>
 
 <%= form_with(model: @forced_rate, url: admin_path, method: :post ) do |f| %>

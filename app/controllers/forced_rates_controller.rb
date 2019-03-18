@@ -1,7 +1,6 @@
 class ForcedRatesController < ApplicationController
   def new
-    @forced_rate = ForcedRate.last || ForcedRate.new
-    # FetchRateJob.perform_later
+    @forced_rate ||= ForcedRate.last || ForcedRate.new
   end
 
   def create
@@ -12,10 +11,10 @@ class ForcedRatesController < ApplicationController
       clear_previous
       shedule_deforce
       @forced_rate.save
-      # flash.now[:notice] = 'Forced Rate created'
-      render :new
+      redirect_to admin_path, flash: { notice: "Rate forced!" }
     else
-      render :new
+      flash[:error]= @forced_rate.errors.full_messages.join('. ')
+      redirect_to admin_path
     end
   end
 
@@ -26,7 +25,7 @@ class ForcedRatesController < ApplicationController
   end
 
   def clear_previous
-    ForcedRate.last.update_attributes(expires_at: Time.now)
+    ForcedRate.last.update_attributes(expires_at: Time.current) if ForcedRate.last
     Sidekiq::ScheduledSet.new.clear
   end
 
