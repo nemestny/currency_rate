@@ -11,11 +11,11 @@ class ForcedRatesController < ApplicationController
       clear_previous
       shedule_deforce
       @forced_rate.save
-      redirect_to admin_path, flash: { success: "Rate forced!" }
+      flash[:success] = "Rate forced!"
     else
-      flash[:danger]= @forced_rate.errors.full_messages.join('. ')
-      redirect_to admin_path
+      flash[:danger] = @forced_rate.errors.full_messages.join('. ')
     end
+    redirect_to admin_path
   end
 
   private

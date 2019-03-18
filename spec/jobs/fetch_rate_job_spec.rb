@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe FetchRateJob, type: :job do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#perform_later" do
+    it "fetch a rate" do
+      ActiveJob::Base.queue_adapter = :test
+      expect {
+        FetchRateJob.perform_later
+      }.to enqueue_job
+    end
+  end
 end
